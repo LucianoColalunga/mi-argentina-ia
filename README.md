@@ -1,5 +1,8 @@
 # mi-argentina-ia
 
+> Prueba de concepto independiente. No es un servicio oficial de Mi Argentina ni está vinculado al
+> Estado nacional. La información de las preguntas frecuentes sale de argentina.gob.ar.
+
 Asistente para responder consultas sobre trámites y servicios de Mi Argentina con modelos que corren
 en servidores propios, sin depender de APIs externas. Responde solo con lo que dicen las preguntas
 frecuentes oficiales (RAG) y está armado para bancar picos grandes de tráfico usando caché en varios
