@@ -1,0 +1,14 @@
+# Despliegue:  npx wrangler deploy        (desde esta carpeta)
+# Secreto:     npx wrangler secret put EDGE_SHARED_SECRET
+name = "mi-argentina-ia-edge"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+
+# Ajustar al dominio real del servicio.
+routes = [
+  { pattern = "asistente.example.com/v1/*", zone_name = "example.com" }
+]
+
+[vars]
+# Cambiar este valor invalida toda la caché del edge (p. ej. después de re-indexar).
+CACHE_NAMESPACE = "kb-2026-09"

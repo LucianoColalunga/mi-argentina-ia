@@ -1,0 +1,155 @@
+{
+  "_aviso": "Dataset de DEMOSTRACIÓN: resúmenes propios de preguntas frecuentes publicadas en argentina.gob.ar (consultadas el 22/09/2026). Antes de producción, reemplazar por la ingesta oficial (python ingest.py --from-web) o por el dataset validado por el organismo.",
+  "faqs": [
+    {
+      "tramite": "Mi Argentina",
+      "pregunta": "¿Qué es Mi Argentina?",
+      "respuesta": "Mi Argentina es la plataforma digital del Estado nacional para gestionar trámites y servicios desde un solo lugar. Desde la web o la app para Android e iOS podés acceder a tus credenciales y documentos digitales (por ejemplo, DNI, licencia de conducir y cédula del vehículo) y a otros servicios de organismos públicos.",
+      "url": "https://www.argentina.gob.ar/miargentina"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "¿Cómo creo mi cuenta en Mi Argentina y qué datos necesito?",
+      "respuesta": "Ingresá a Mi Argentina desde la web o la app y seguí los pasos de registro. Vas a necesitar:\n1. Tu número de CUIL.\n2. Una dirección de correo electrónico.\n3. Una contraseña de al menos 8 caracteres que combine mayúsculas, minúsculas, números y caracteres especiales.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "¿Quién puede tener una cuenta de Mi Argentina? ¿Puedo compartirla?",
+      "respuesta": "Puede tener cuenta cualquier persona mayor de 13 años. La cuenta es personal: se basa en los datos de su titular, no se puede compartir y no permite ver los servicios de otra persona.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "¿Puedo usar Mi Argentina desde el celular?",
+      "respuesta": "Sí. Podés usar Mi Argentina desde el navegador del celular o descargar la aplicación oficial, disponible para Android e iOS.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Validación de identidad",
+      "pregunta": "¿Para qué sirve validar mi identidad en Mi Argentina?",
+      "respuesta": "Validar tu identidad confirma que la cuenta te pertenece. Con la identidad validada se habilitan servicios personalizados, como la licencia de conducir digital, las cédulas del vehículo y el DNI en el celular (que requiere una cuenta con identidad validada nivel 3).",
+      "url": "https://www.argentina.gob.ar/miargentina/validar-identidad"
+    },
+    {
+      "tramite": "Validación de identidad",
+      "pregunta": "¿Cómo valido mi identidad en Mi Argentina?",
+      "respuesta": "Tenés dos opciones: desde la app, con reconocimiento facial, o de forma presencial en un Punto Digital.\nPara hacerlo desde la app:\n1. Iniciá sesión en Mi Argentina.\n2. Elegí la opción para validar tu identidad.\n3. Subí el volumen del teléfono.\n4. Permití el acceso a la cámara.\n5. Sacate las selfies siguiendo las indicaciones de la pantalla.",
+      "url": "https://www.argentina.gob.ar/miargentina/validar-identidad"
+    },
+    {
+      "tramite": "Validación de identidad",
+      "pregunta": "¿Qué recomendaciones hay para validar la identidad con selfie? ¿Qué hago si falla?",
+      "respuesta": "Para que la validación funcione: ubicate en un lugar con luz natural y fondo claro, sostené el celular a la altura de la cara, no uses anteojos ni accesorios y evitá movimientos bruscos. Si la validación falla, puede deberse a cambios de iluminación, la cámara sucia, movimientos involuntarios o pérdida de conexión. Podés reintentar o validar tu identidad de forma presencial en un Punto Digital.",
+      "url": "https://www.argentina.gob.ar/miargentina/validar-identidad"
+    },
+    {
+      "tramite": "Validación de identidad",
+      "pregunta": "Ya tenía una cuenta sin validar, ¿tengo que borrarla para validar mi identidad?",
+      "respuesta": "No. Si validás tu identidad con el sistema biométrico de la aplicación, tu cuenta existente se actualiza automáticamente como cuenta validada.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "Olvidé mi contraseña de Mi Argentina, ¿cómo la recupero?",
+      "respuesta": "Podés recuperarla usando tu CUIL junto con el correo electrónico o el teléfono que tengas verificado en la cuenta. Seguí la opción de recuperación de contraseña en la pantalla de ingreso.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "¿Cómo cambio mi contraseña de Mi Argentina?",
+      "respuesta": "Ingresá a la sección \"Configurar mi cuenta\", verificá tu contraseña actual y reemplazala por una nueva.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "Me registré con un correo electrónico equivocado, ¿cómo lo cambio?",
+      "respuesta": "Ingresá a Mi Argentina desde la web con tu CUIL y contraseña, y modificá el correo electrónico desde la sección \"Tu perfil\".",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "¿Cómo verifico mi número de teléfono en Mi Argentina?",
+      "respuesta": "Completá tu número de teléfono en tu perfil y seguí los pasos para validarlo. Si no podés hacerlo desde la app, intentá desde la versión web.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Seguridad de la cuenta",
+      "pregunta": "Me robaron el celular, ¿qué hago con mi cuenta de Mi Argentina?",
+      "respuesta": "Bloqueá el equipo llamando al *910 y cerrá las sesiones abiertas de Mi Argentina desde la web, en la sección \"Mi cuenta\" > \"Seguridad\".",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Cuenta Mi Argentina",
+      "pregunta": "¿Puedo eliminar mi cuenta de Mi Argentina?",
+      "respuesta": "Sí. Desde \"Configurar mi cuenta\" podés eliminarla: elegí el motivo y confirmá la operación.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Datos personales",
+      "pregunta": "Hay un error en mis datos de Mi Argentina, ¿cómo lo corrijo?",
+      "respuesta": "Los datos que ves en Mi Argentina provienen de cada organismo. Para corregirlos, contactá al organismo que figura como fuente en el servicio correspondiente. La información se actualiza diariamente según lo que informa cada organismo.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "Hijos asociados",
+      "pregunta": "¿Cómo asocio a mis hijos a mi cuenta de Mi Argentina?",
+      "respuesta": "Necesitás tener tu identidad validada. Después ingresá a la sección \"Hijos asociados\" y cargá el número de DNI de cada hijo o hija; el vínculo se verifica con el RENAPER.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    },
+    {
+      "tramite": "DNI en tu celular",
+      "pregunta": "¿Qué es el DNI en tu celular (DNI digital)? ¿Reemplaza al DNI tarjeta?",
+      "respuesta": "Es la versión digital de tu DNI, disponible en la app Mi Argentina. Tiene la misma validez y las mismas funciones que el DNI tarjeta, excepto para votar y para viajar al exterior. Es opcional y no reemplaza al DNI tarjeta vigente. Si tu DNI cambia, el digital también debe actualizarse.",
+      "url": "https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular"
+    },
+    {
+      "tramite": "DNI en tu celular",
+      "pregunta": "¿Qué requisitos necesito para tener el DNI en el celular? ¿Quiénes pueden tramitarlo?",
+      "respuesta": "Pueden tramitarlo personas argentinas y extranjeras con residencia vigente, mayores de 14 años. Requisitos:\n1. DNI tarjeta vigente y actualizado.\n2. Un celular Android o iOS compatible (las versiones mínimas se informan en la página oficial).\n3. Correo electrónico.\n4. Cuenta de Mi Argentina con identidad validada nivel 3.",
+      "url": "https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular"
+    },
+    {
+      "tramite": "DNI en tu celular",
+      "pregunta": "¿Cómo solicito y activo el DNI en el celular?",
+      "respuesta": "Podés solicitarlo al tramitar un DNI tarjeta nuevo o comunicándote con los canales de atención del RENAPER. Recibirás por correo un código de activación (suele llegar en 48 a 72 horas hábiles), que vale 7 días y permite descargar el documento una sola vez.\nPara activarlo:\n1. Ingresá a Mi Argentina.\n2. Andá a \"Mis trámites\" y elegí \"DNI digital - Activación\".\n3. Ingresá el código de activación.\n4. Creá un PIN de 6 dígitos.",
+      "url": "https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular"
+    },
+    {
+      "tramite": "DNI en tu celular",
+      "pregunta": "¿Cómo muestro mi DNI digital para acreditar identidad? ¿Necesito internet?",
+      "respuesta": "Abrí Mi Argentina, entrá en \"Mis documentos\", elegí DNI, ingresá tu PIN y mostralo. Una vez descargado, funciona sin conexión a internet. Por seguridad, solo se puede abrir en el teléfono donde se instaló.",
+      "url": "https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular"
+    },
+    {
+      "tramite": "DNI en tu celular",
+      "pregunta": "¿Puedo viajar al exterior con el DNI digital?",
+      "respuesta": "No. El DNI en el celular no sirve para salir del país. Para viajar necesitás el pasaporte o, para los países del MERCOSUR ampliado, el DNI tarjeta.",
+      "url": "https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular"
+    },
+    {
+      "tramite": "DNI en tu celular",
+      "pregunta": "El código de activación del DNI digital venció, no me llegó o reinstalé la app, ¿qué hago?",
+      "respuesta": "Comunicate con el RENAPER a través de sus canales de atención para pedir un nuevo código de activación. Tené en cuenta que si borrás y reinstalás la app Mi Argentina, el DNI digital deja de estar disponible y vas a necesitar un código nuevo.",
+      "url": "https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular"
+    },
+    {
+      "tramite": "DNI en tu celular",
+      "pregunta": "¿Cuánto cuesta el DNI en el celular?",
+      "respuesta": "Las tarifas se actualizan periódicamente. Consultá el valor vigente en el sitio oficial del RENAPER antes de iniciar el trámite.",
+      "url": "https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular"
+    },
+    {
+      "tramite": "Cédula del vehículo digital",
+      "pregunta": "¿Puedo autorizar a otra persona a manejar mi vehículo con la cédula digital?",
+      "respuesta": "Sí. Desde Mi Argentina podés autorizar a otras personas a conducir tu vehículo; la persona autorizada tiene que tener el servicio suscripto en su propia cuenta.",
+      "url": "https://www.argentina.gob.ar/miargentina/servicios/cedulas-de-tu-vehiculo-digital/preguntas-frecuentes"
+    },
+    {
+      "tramite": "CUD digital",
+      "pregunta": "¿Cómo obtengo el Certificado Único de Discapacidad (CUD) digital?",
+      "respuesta": "El CUD digital se genera automáticamente en Mi Argentina para personas mayores de 13 años que tengan CUD y la identidad validada en la plataforma.",
+      "url": "https://www.argentina.gob.ar/miargentina/preguntasfrecuentes"
+    }
+  ]
+}

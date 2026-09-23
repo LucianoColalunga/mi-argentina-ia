@@ -1,0 +1,53 @@
+# Override de pruebas end-to-end: todo el stack real (build, Redis, Chroma, ingesta,
+# réplicas de la API, nginx) con Ollama reemplazado por tests/e2e/mock_ollama.py.
+# No necesita GPU ni descarga modelos (~1,5 GB de imágenes en total).
+#
+#   docker compose -f docker-compose.yml -f tests/e2e/docker-compose.e2e.yml up -d --build
+#   docker compose -f docker-compose.yml -f tests/e2e/docker-compose.e2e.yml run --rm smoke
+#   docker compose -f docker-compose.yml -f tests/e2e/docker-compose.e2e.yml down -v
+
+services:
+  ollama:
+    build: .
+    image: mi-argentina-ia-mock-ollama
+    command: ["python", "-m", "uvicorn", "mock_ollama:app", "--app-dir", "/mock", "--host", "0.0.0.0", "--port", "11434", "--log-level", "warning"]
+    volumes: !override
+      - ./tests/e2e:/mock:ro
+    deploy: !reset {}
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:11434/api/tags', timeout=2)"]
+      interval: 3s
+      retries: 20
+
+  ollama-init:
+    build: .
+    image: mi-argentina-ia-mock-init
+    entrypoint: !reset null
+    command: ["python", "-c", "print('mock: no hay modelos que descargar')"]
+
+  # Nombre propio para los embeddings falsos: si después se levanta el modo real sobre el
+  # mismo volumen de Chroma, la ingesta detecta el cambio de modelo y re-indexa.
+  ingest:
+    environment:
+      OLLAMA_EMBED_MODEL: mock-bolsa-de-palabras
+
+  api:
+    environment:
+      OLLAMA_EMBED_MODEL: mock-bolsa-de-palabras
+      # Simula el edge autenticado: habilita X-Client-Id para probar el rate limit por cliente.
+      EDGE_SHARED_SECRET: secreto-solo-para-pruebas-e2e
+      # Los embeddings falsos (bolsa de palabras) dan similitudes más bajas que bge-m3.
+      MIN_RELEVANCE_SCORE: "0.2"
+
+  smoke:
+    profiles: ["e2e"]
+    build: .
+    image: mi-argentina-ia-smoke
+    command: ["python", "/e2e/smoke.py"]
+    environment:
+      E2E_EDGE_SECRET: secreto-solo-para-pruebas-e2e
+    volumes:
+      - ./tests/e2e:/e2e:ro
+    depends_on:
+      nginx:
+        condition: service_started

@@ -1,0 +1,11 @@
+# Páginas oficiales que `python ingest.py --from-web` descarga e indexa.
+# Solo se aceptan URLs https de dominios *.gob.ar y se respeta robots.txt.
+# Una URL por línea; las líneas que empiezan con # se ignoran.
+
+https://www.argentina.gob.ar/miargentina/preguntasfrecuentes
+https://www.argentina.gob.ar/miargentina/validar-identidad
+https://www.argentina.gob.ar/miargentina/mesadeayuda
+https://www.argentina.gob.ar/interior/dni-en-tu-celular/preguntas-frecuentes-dni-en-tu-celular
+https://www.argentina.gob.ar/interior/dni/preguntas-frecuentes-dni
+https://www.argentina.gob.ar/miargentina/servicios/cedulas-de-tu-vehiculo-digital/preguntas-frecuentes
+https://www.argentina.gob.ar/sid/preguntasfrecuentes

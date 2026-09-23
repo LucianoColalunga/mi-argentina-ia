@@ -1,0 +1,26 @@
+# --- API ---
+fastapi==0.141.1
+uvicorn[standard]==0.53.0
+uvicorn-worker==0.4.0
+gunicorn==26.2.0
+pydantic==2.13.5
+pydantic-settings==2.15.0
+httpx==0.28.1
+prometheus-client==0.26.0
+
+# --- Caché / rate limiting ---
+redis[hiredis]==8.1.0
+
+# --- Base vectorial (cliente HTTP liviano, sin ONNX) ---
+chromadb-client==1.5.9
+
+# --- LangChain + modelos locales (Ollama / vLLM OpenAI-compatible) ---
+langchain-core==1.6.4
+langchain-ollama==1.1.0
+langchain-openai==1.6.4
+langchain-text-splitters==1.1.2
+tiktoken==0.14.0
+
+# --- Ingesta / scraping ---
+beautifulsoup4==4.15.0
+lxml==6.1.3

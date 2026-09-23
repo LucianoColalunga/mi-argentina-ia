@@ -1,0 +1,7 @@
+# Override para equipos sin GPU NVIDIA (p. ej. la notebook de respaldo de la demo).
+#   docker compose -f docker-compose.yml -f docker-compose.cpu.yml up -d --build
+# En CPU conviene un modelo chico en .env, por ejemplo:
+#   OLLAMA_CHAT_MODEL=llama3.2:3b   (o qwen2.5:1.5b para equipos modestos)
+services:
+  ollama:
+    deploy: !reset {}

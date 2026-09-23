@@ -1,0 +1,124 @@
+# Modo local para notebook SIN GPU (demo/presentación), con modelos reales en CPU.
+#
+#   docker compose -f docker-compose.yml -f docker-compose.local.yml up -d --build
+#
+# Reemplaza Ollama por dos servidores llama.cpp (API compatible con OpenAI, el mismo
+# camino de código que vLLM en producción):
+#   - llm:        modelo de chat cuantizado (GGUF) en CPU
+#   - embeddings: bge-m3 (mismo modelo de embeddings que producción)
+# Los modelos se descargan de Hugging Face la primera vez y quedan en el volumen
+# `llama-models` (la demo después funciona sin internet).
+
+x-llamacpp: &llamacpp
+  image: ghcr.io/ggml-org/llama.cpp:server@sha256:82b5129742c04e12c4b710ae1908fd951f6b227339d45f0aa71f1165df353f70
+  environment:
+    LLAMA_CACHE: /models
+  volumes:
+    - llama-models:/models
+  healthcheck:
+    test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8080/health"]
+    interval: 10s
+    timeout: 5s
+    retries: 12
+    start_period: 900s  # primera descarga del modelo
+  restart: unless-stopped
+
+x-local-env: &local-env
+  LLM_PROVIDER: vllm                         # cualquier servidor OpenAI-compatible
+  VLLM_BASE_URL: http://llm:8080/v1
+  VLLM_MODEL: ${LOCAL_CHAT_MODEL:-bartowski/Llama-3.2-3B-Instruct-GGUF:Q4_K_M}  # cambia al cambiar de modelo: invalida la caché
+  VLLM_API_KEY: ${LOCAL_API_KEY:-clave-local-demo}
+  EMBEDDINGS_PROVIDER: openai
+  EMBEDDINGS_BASE_URL: http://embeddings:8080/v1
+  EMBEDDINGS_MODEL: bge-m3-gguf-q8
+  EMBEDDINGS_API_KEY: ${LOCAL_API_KEY:-clave-local-demo}
+
+services:
+  # Caché persistente en modo local: si la notebook se suspende o Docker se reinicia,
+  # las respuestas precalentadas para la presentación no se pierden.
+  redis:
+    command: ["redis-server", "--maxmemory", "512mb", "--maxmemory-policy", "volatile-lru", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+
+  # Ollama y vLLM no se usan en este modo.
+  ollama:
+    profiles: ["ollama"]
+  ollama-init:
+    profiles: ["ollama"]
+
+  llm:
+    <<: *llamacpp
+    command:
+      - -hf
+      # 3B: buen equilibrio calidad/velocidad en CPU. Más liviano: bartowski/Llama-3.2-1B-Instruct-GGUF:Q4_K_M
+      - ${LOCAL_CHAT_MODEL:-bartowski/Llama-3.2-3B-Instruct-GGUF:Q4_K_M}
+      - --alias
+      - ${LOCAL_CHAT_MODEL:-bartowski/Llama-3.2-3B-Instruct-GGUF:Q4_K_M}
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8080"
+      - --api-key
+      - ${LOCAL_API_KEY:-clave-local-demo}
+      - --ctx-size
+      - "8192"
+      - --parallel
+      - "2"               # 2 generaciones simultáneas (4096 tokens de contexto cada una)
+      - --n-predict
+      - "384"             # tope duro de tokens de salida, además del de la API
+      - --no-webui
+
+  embeddings:
+    <<: *llamacpp
+    command:
+      - -hf
+      - ${LOCAL_EMBED_MODEL:-gpustack/bge-m3-GGUF:Q8_0}
+      - --embeddings
+      - --alias
+      - bge-m3-gguf-q8
+      - --host
+      - 0.0.0.0
+      - --port
+      - "8080"
+      - --api-key
+      - ${LOCAL_API_KEY:-clave-local-demo}
+      - --ctx-size
+      - "8192"
+      - --parallel
+      - "4"
+      - --batch-size
+      - "2048"
+      - --ubatch-size
+      - "2048"            # bge-m3 no es causal: cada texto debe entrar entero en un ubatch
+      - --no-webui
+
+  ingest:
+    environment:
+      <<: *local-env
+    depends_on: !override
+      chroma:
+        condition: service_healthy
+      embeddings:
+        condition: service_healthy
+
+  api:
+    environment:
+      <<: *local-env
+      # Ajustes para CPU: menos contexto y respuestas más cortas = respuestas en segundos.
+      RETRIEVAL_TOP_K: "3"
+      MAX_CONTEXT_TOKENS: "1200"
+      MAX_OUTPUT_TOKENS: "350"
+      LLM_TIMEOUT_SECONDS: "80"              # menor que proxy_read_timeout de nginx (90 s)
+      MAX_CONCURRENT_LLM_CALLS: "1"          # por proceso; el resto espera en cola
+      LLM_QUEUE_TIMEOUT_SECONDS: "60"
+      RATE_LIMIT_PER_MINUTE: "60"            # demo: el presentador comparte IP con el precalentado
+    depends_on:
+      llm:
+        condition: service_healthy
+      embeddings:
+        condition: service_healthy
+
+volumes:
+  llama-models:
+  redis-data:
